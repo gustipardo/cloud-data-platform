@@ -1,0 +1,129 @@
+name: Actividad Diaria
+
+on:
+    schedule:
+        # 4 ejecuciones al día en horarios variados (UTC)
+        # Argentina es UTC-3, así que:
+        #   11:08 UTC = 08:08 ART (mañana)
+        #   15:23 UTC = 12:23 ART (mediodía)
+        #   19:41 UTC = 16:41 ART (tarde)
+        #   00:17 UTC = 21:17 ART (noche)
+        - cron: "8 11 * * *"
+        - cron: "23 15 * * *"
+        - cron: "41 19 * * *"
+        - cron: "17 0 * * *"
+    workflow_dispatch:
+
+jobs:
+    actividad:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
+
+            - name: Configurar Git
+              run: |
+                  git config user.name "gustipardo"
+                  git config user.email "gusm2003@gmail.com"
+
+            - name: Generar actividad natural
+              run: |
+                  # Determinar día de la semana (1=lunes ... 7=domingo)
+                  DOW=$(date -u +%u)
+
+                  # Probabilidad de hacer commits según día de la semana (en %)
+                  case $DOW in
+                    1) PROB=87 ;;  # Lunes
+                    2) PROB=92 ;;  # Martes
+                    3) PROB=90 ;;  # Miércoles
+                    4) PROB=88 ;;  # Jueves
+                    5) PROB=75 ;;  # Viernes
+                    6) PROB=42 ;;  # Sábado
+                    7) PROB=33 ;;  # Domingo
+                  esac
+
+                  # Reducir probabilidad por ejecución (4 ejecuciones/día)
+                  # Queremos ~2-3 ejecuciones activas por día laborable
+                  ROLL=$((RANDOM % 100))
+
+                  if [ $ROLL -ge $PROB ]; then
+                    echo "🌙 Descanso en esta ejecución (roll=$ROLL, umbral=$PROB)"
+                    exit 0
+                  fi
+
+                  # Cantidad de commits: distribución que favorece 1-4 y raramente llega a 7
+                  WEIGHT=$((RANDOM % 100))
+                  if [ $WEIGHT -lt 25 ]; then
+                    NUM_COMMITS=1
+                  elif [ $WEIGHT -lt 50 ]; then
+                    NUM_COMMITS=2
+                  elif [ $WEIGHT -lt 70 ]; then
+                    NUM_COMMITS=3
+                  elif [ $WEIGHT -lt 85 ]; then
+                    NUM_COMMITS=4
+                  elif [ $WEIGHT -lt 93 ]; then
+                    NUM_COMMITS=5
+                  elif [ $WEIGHT -lt 98 ]; then
+                    NUM_COMMITS=6
+                  else
+                    NUM_COMMITS=7
+                  fi
+
+                  echo "📝 Generando $NUM_COMMITS commits (dow=$DOW, prob=$PROB%)"
+
+                  # Pool de mensajes realistas
+                  MENSAJES=(
+                    "Update notes"
+                    "Minor fix"
+                    "Refactor"
+                    "Add entry"
+                    "Fix typo"
+                    "WIP"
+                    "Clean up"
+                    "Update docs"
+                    "Small tweak"
+                    "Review changes"
+                    "Adjust formatting"
+                    "Add reference"
+                    "Quick update"
+                    "Update log"
+                    "Progress update"
+                    "Notes"
+                    "Draft"
+                    "Revision"
+                    "Minor update"
+                    "Checkpoint"
+                    "Sync"
+                    "Bump"
+                    "Tidy up"
+                    "Add notes"
+                    "Update"
+                    "Fix formatting"
+                    "Restructure"
+                    "Daily progress"
+                    "Continue work"
+                    "Save progress"
+                  )
+
+                  for ((i=1; i<=NUM_COMMITS; i++)); do
+                    # Elegir mensaje aleatorio
+                    MSG_IDX=$((RANDOM % ${#MENSAJES[@]}))
+                    MSG="${MENSAJES[$MSG_IDX]}"
+
+                    # Escribir en el archivo de actividad
+                    TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M:%S")
+                    echo "$TIMESTAMP | $MSG" >> actividad.md
+
+                    git add actividad.md
+                    git commit -m "$MSG"
+
+                    # Esperar entre 45s y 4min entre commits (para variar timestamps)
+                    if [ $i -lt $NUM_COMMITS ]; then
+                      WAIT=$((RANDOM % 195 + 45))
+                      echo "  ⏳ Esperando ${WAIT}s antes del siguiente commit..."
+                      sleep $WAIT
+                    fi
+                  done
+
+                  git push

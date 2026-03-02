@@ -2,15 +2,10 @@ name: CI
 
 on:
   schedule:
-    # 4 ejecuciones al día (UTC) → Argentina UTC-3
-    #   11:08 UTC = 08:08 ART
-    #   15:23 UTC = 12:23 ART
-    #   19:41 UTC = 16:41 ART
-    #   00:17 UTC = 21:17 ART
-    - cron: '8 11 * * *'
-    - cron: '23 15 * * *'
-    - cron: '41 19 * * *'
-    - cron: '17 0 * * *'
+    - cron: "8 11 * * *"
+    - cron: "23 15 * * *"
+    - cron: "41 19 * * *"
+    - cron: "17 0 * * *"
   workflow_dispatch:
 
 jobs:
@@ -27,17 +22,13 @@ jobs:
           git config user.email "gusm2003@gmail.com"
 
       - name: Run tasks
+        shell: bash
         run: |
           DOW=$(date -u +%u)
 
           case $DOW in
-            1) PROB=87 ;;
-            2) PROB=92 ;;
-            3) PROB=90 ;;
-            4) PROB=88 ;;
-            5) PROB=75 ;;
-            6) PROB=42 ;;
-            7) PROB=33 ;;
+            1) PROB=87 ;; 2) PROB=92 ;; 3) PROB=90 ;;
+            4) PROB=88 ;; 5) PROB=75 ;; 6) PROB=42 ;; 7) PROB=33 ;;
           esac
 
           ROLL=$((RANDOM % 100))
@@ -47,209 +38,203 @@ jobs:
           fi
 
           WEIGHT=$((RANDOM % 100))
-          if [ $WEIGHT -lt 30 ]; then
-            NUM=1
-          elif [ $WEIGHT -lt 55 ]; then
-            NUM=2
-          elif [ $WEIGHT -lt 75 ]; then
-            NUM=3
-          elif [ $WEIGHT -lt 88 ]; then
-            NUM=4
-          elif [ $WEIGHT -lt 95 ]; then
-            NUM=5
-          else
-            NUM=6
+          if [ $WEIGHT -lt 30 ]; then NUM=1
+          elif [ $WEIGHT -lt 55 ]; then NUM=2
+          elif [ $WEIGHT -lt 75 ]; then NUM=3
+          elif [ $WEIGHT -lt 88 ]; then NUM=4
+          elif [ $WEIGHT -lt 95 ]; then NUM=5
+          else NUM=6
           fi
 
-          # === POOL DE MODIFICACIONES REALISTAS ===
+          echo "Generating $NUM changes"
 
-          do_change() {
-            local CHANGE_TYPE=$((RANDOM % 12))
+          for ((i=1; i<=NUM; i++)); do
+            CHANGE_TYPE=$((RANDOM % 12))
+            TS=$(date -u +"%Y-%m-%d %H:%M:%S")
 
             case $CHANGE_TYPE in
               0)
-                # Agregar query SQL
-                QUERIES=(
-                  "-- Query: Events processed per hour\nSELECT\n    DATE_TRUNC('hour', event_timestamp) AS hour,\n    COUNT(*) AS events\nFROM analytics.events\nWHERE event_timestamp >= NOW() - INTERVAL '\$((RANDOM % 14 + 1)) days'\nGROUP BY 1\nORDER BY 1 DESC;\n"
-                  "-- Query: Failed events by source\nSELECT\n    source_key,\n    COUNT(*) AS error_count\nFROM analytics.error_log\nWHERE created_at >= NOW() - INTERVAL '7 days'\nGROUP BY source_key\nORDER BY error_count DESC\nLIMIT 20;\n"
-                  "-- Query: User retention cohort\nSELECT\n    DATE_TRUNC('week', first_seen) AS cohort,\n    COUNT(DISTINCT user_id) AS users\nFROM (\n    SELECT user_id, MIN(event_timestamp) AS first_seen\n    FROM analytics.events\n    WHERE user_id IS NOT NULL\n    GROUP BY user_id\n) cohorts\nGROUP BY 1\nORDER BY 1;\n"
-                  "-- Query: Average processing latency\nSELECT\n    DATE(processed_at) AS day,\n    ROUND(AVG(EXTRACT(EPOCH FROM (processed_at - event_timestamp))), 2) AS avg_latency_sec\nFROM analytics.events\nWHERE processed_at >= NOW() - INTERVAL '30 days'\nGROUP BY 1\nORDER BY 1 DESC;\n"
-                  "-- Query: Top payload sizes\nSELECT\n    event_type,\n    ROUND(AVG(pg_column_size(payload))) AS avg_size_bytes,\n    MAX(pg_column_size(payload)) AS max_size_bytes\nFROM analytics.events\nGROUP BY event_type\nORDER BY avg_size_bytes DESC;\n"
-                )
-                IDX=$((RANDOM % ${#QUERIES[@]}))
-                echo "" >> sql/queries/analytics.sql
-                echo -e "${QUERIES[$IDX]}" >> sql/queries/analytics.sql
+                cat >> sql/queries/analytics.sql << 'EOSQL'
+
+          -- Query: Events processed per hour
+          SELECT
+              DATE_TRUNC('hour', event_timestamp) AS hour,
+              COUNT(*) AS events
+          FROM analytics.events
+          WHERE event_timestamp >= NOW() - INTERVAL '7 days'
+          GROUP BY 1
+          ORDER BY 1 DESC;
+          EOSQL
                 git add sql/queries/analytics.sql
                 MSG="feat: add analytics query"
                 ;;
               1)
-                # Agregar nota de desarrollo
-                NOTES=(
-                  "- Investigated cold start optimization with provisioned concurrency"
-                  "- Tested batch processing with SQS FIFO queue"
-                  "- Reviewed DynamoDB capacity metrics, current usage well within limits"
-                  "- Profiled Lambda memory usage, 512MB is optimal for current workload"
-                  "- Explored Step Functions for complex event processing workflows"
-                  "- Benchmarked JSON vs Parquet for S3 storage format"
-                  "- Reviewed CloudWatch Logs Insights queries for debugging"
-                  "- Tested VPC endpoint latency vs public endpoint"
-                  "- Analyzed error patterns, most failures are transient network issues"
-                  "- Evaluated EventBridge Pipes as alternative to S3 notifications"
-                )
-                IDX=$((RANDOM % ${#NOTES[@]}))
-                TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M")
-                echo "" >> docs/notes.md
-                echo "### $TIMESTAMP" >> docs/notes.md
-                echo "" >> docs/notes.md
-                echo "${NOTES[$IDX]}" >> docs/notes.md
+                R=$((RANDOM % 10))
+                declare -a NOTES
+                NOTES[0]="- Investigated cold start optimization with provisioned concurrency"
+                NOTES[1]="- Tested batch processing with SQS FIFO queue"
+                NOTES[2]="- Reviewed DynamoDB capacity metrics, current usage within limits"
+                NOTES[3]="- Profiled Lambda memory usage, 512MB optimal for current workload"
+                NOTES[4]="- Explored Step Functions for complex event workflows"
+                NOTES[5]="- Benchmarked JSON vs Parquet for S3 storage"
+                NOTES[6]="- Reviewed CloudWatch Logs Insights queries for debugging"
+                NOTES[7]="- Tested VPC endpoint latency vs public endpoint"
+                NOTES[8]="- Analyzed error patterns, most failures are transient"
+                NOTES[9]="- Evaluated EventBridge Pipes as alternative to S3 notifications"
+                {
+                  echo ""
+                  echo "### $TS"
+                  echo ""
+                  echo "${NOTES[$R]}"
+                } >> docs/notes.md
                 git add docs/notes.md
                 MSG="docs: add development notes"
                 ;;
               2)
-                # Actualizar changelog
-                ENTRIES=(
-                  "- Optimize DynamoDB batch write operations"
-                  "- Add request validation middleware"
-                  "- Improve error message formatting"
-                  "- Update Lambda runtime configuration"
-                  "- Add retry logic for transient failures"
-                  "- Refactor event transformation pipeline"
-                  "- Update monitoring thresholds"
-                  "- Add data quality checks"
-                  "- Improve API response caching"
-                  "- Update dependency versions"
-                )
-                IDX=$((RANDOM % ${#ENTRIES[@]}))
-                ENTRY="${ENTRIES[$IDX]}"
-                sed -i "/^## \[0.4.0\]/a\\\\n### Changed\n$ENTRY" CHANGELOG.md 2>/dev/null || echo -e "\n$ENTRY" >> CHANGELOG.md
+                R=$((RANDOM % 10))
+                declare -a ENTRIES
+                ENTRIES[0]="- Optimize DynamoDB batch write operations"
+                ENTRIES[1]="- Add request validation middleware"
+                ENTRIES[2]="- Improve error message formatting"
+                ENTRIES[3]="- Update Lambda runtime configuration"
+                ENTRIES[4]="- Add retry logic for transient failures"
+                ENTRIES[5]="- Refactor event transformation pipeline"
+                ENTRIES[6]="- Update monitoring thresholds"
+                ENTRIES[7]="- Add data quality checks"
+                ENTRIES[8]="- Improve API response caching"
+                ENTRIES[9]="- Update dependency versions"
+                {
+                  echo ""
+                  echo "${ENTRIES[$R]}"
+                } >> CHANGELOG.md
                 git add CHANGELOG.md
                 MSG="docs: update changelog"
                 ;;
               3)
-                # Modificar config dev
-                KEYS=("data_retention_days" "ttl_days")
-                KEY=${KEYS[$((RANDOM % ${#KEYS[@]}))]}
                 NEW_VAL=$((RANDOM % 180 + 30))
-                if command -v python3 &>/dev/null; then
-                  python3 -c "
-import json
-with open('config/dev.json', 'r') as f:
-    cfg = json.load(f)
-for section in cfg.values():
-    if isinstance(section, dict) and '$KEY' in section:
-        section['$KEY'] = $NEW_VAL
-with open('config/dev.json', 'w') as f:
-    json.dump(cfg, f, indent=2)
-    f.write('\n')
-"
-                fi
+                python3 << PYEOF
+          import json
+          with open('config/dev.json', 'r') as f:
+              cfg = json.load(f)
+          if 'dynamodb' in cfg and 'ttl_days' in cfg['dynamodb']:
+              cfg['dynamodb']['ttl_days'] = $NEW_VAL
+          if 'features' in cfg and 'data_retention_days' in cfg['features']:
+              cfg['features']['data_retention_days'] = $NEW_VAL
+          with open('config/dev.json', 'w') as f:
+              json.dump(cfg, f, indent=2)
+              f.write('\n')
+          PYEOF
                 git add config/dev.json
                 MSG="chore: update dev config"
                 ;;
               4)
-                # Agregar comentario en Terraform
-                COMMENTS=(
-                  "# TODO: Add WAF integration for API Gateway"
-                  "# TODO: Implement cross-region replication"
-                  "# NOTE: Consider switching to provisioned capacity for prod"
-                  "# TODO: Add VPC endpoint for S3"
-                  "# NOTE: Evaluate Graviton-based Lambda for cost savings"
-                  "# TODO: Add backup strategy for DynamoDB"
-                )
-                IDX=$((RANDOM % ${#COMMENTS[@]}))
-                echo "" >> infrastructure/main.tf
-                echo "${COMMENTS[$IDX]}" >> infrastructure/main.tf
+                R=$((RANDOM % 6))
+                declare -a COMMENTS
+                COMMENTS[0]="# TODO: Add WAF integration for API Gateway"
+                COMMENTS[1]="# TODO: Implement cross-region replication"
+                COMMENTS[2]="# NOTE: Consider switching to provisioned capacity for prod"
+                COMMENTS[3]="# TODO: Add VPC endpoint for S3"
+                COMMENTS[4]="# NOTE: Evaluate Graviton-based Lambda for cost savings"
+                COMMENTS[5]="# TODO: Add backup strategy for DynamoDB"
+                {
+                  echo ""
+                  echo "${COMMENTS[$R]}"
+                } >> infrastructure/main.tf
                 git add infrastructure/main.tf
                 MSG="chore: add infrastructure notes"
                 ;;
               5)
-                # Agregar test case
-                TEST_CASES=(
-                  "\n\n    def test_empty_payload(self):\n        event = {\n            \"event_type\": \"user.login\",\n            \"payload\": {},\n            \"timestamp\": 1700000000,\n        }\n        result = transform_event(event)\n        assert result[\"payload\"] == {}"
-                  "\n\n    def test_large_batch_validation(self):\n        events = [{\"event_type\": \"user.login\", \"payload\": {}, \"timestamp\": i} for i in range(100)]\n        results = [validate_event(e) for e in events]\n        assert all(results)"
-                  "\n\n    def test_special_characters_in_payload(self):\n        event = {\n            \"event_type\": \"user.signup\",\n            \"payload\": {\"name\": \"Test User <script>\"},\n            \"timestamp\": 1700000000,\n        }\n        assert validate_event(event) is True"
-                )
-                IDX=$((RANDOM % ${#TEST_CASES[@]}))
-                echo -e "${TEST_CASES[$IDX]}" >> tests/test_utils.py
+                cat >> tests/test_utils.py << 'EOPY'
+
+
+              def test_event_id_deterministic(self):
+                  event = {
+                      "event_type": "user.login",
+                      "payload": {"key": "value"},
+                      "timestamp": 1700000000,
+                  }
+                  result = transform_event(event)
+                  id1 = generate_event_id(result)
+                  id2 = generate_event_id(result)
+                  assert id1 == id2
+          EOPY
                 git add tests/test_utils.py
                 MSG="test: add test case"
                 ;;
               6)
-                # Agregar docstring o comentario en handler
-                ADDITIONS=(
-                  "\n# Performance: avg processing time ~150ms per event"
-                  "\n# Monitoring: check CloudWatch dashboard for error rates"
-                  "\n# Scale: tested with up to 10k events/minute"
-                )
-                IDX=$((RANDOM % ${#ADDITIONS[@]}))
-                echo -e "${ADDITIONS[$IDX]}" >> lambda/data_processor/handler.py
+                R=$((RANDOM % 3))
+                declare -a HANDLER_NOTES
+                HANDLER_NOTES[0]="# Performance: avg processing time ~150ms per event"
+                HANDLER_NOTES[1]="# Monitoring: check CloudWatch dashboard for error rates"
+                HANDLER_NOTES[2]="# Scale: tested with up to 10k events/minute"
+                {
+                  echo ""
+                  echo "${HANDLER_NOTES[$R]}"
+                } >> lambda/data_processor/handler.py
                 git add lambda/data_processor/handler.py
                 MSG="docs: add handler notes"
                 ;;
               7)
-                # Actualizar utils con nueva función helper
-                UTILS=(
-                  "\n\ndef format_event_summary(event: dict) -> str:\n    \"\"\"Format event for logging output.\"\"\"\n    return f\"[{event.get('event_type', 'unknown')}] {event.get('event_id', 'no-id')}\""
-                  "\n\ndef is_high_priority(event: dict) -> bool:\n    \"\"\"Check if event requires immediate processing.\"\"\"\n    priority_types = ['error.reported', 'payment.failed', 'order.cancelled']\n    return event.get('event_type') in priority_types"
-                  "\n\ndef mask_pii(payload: dict) -> dict:\n    \"\"\"Mask personally identifiable information in payloads.\"\"\"\n    sensitive_keys = ['email', 'phone', 'ssn', 'credit_card']\n    masked = payload.copy()\n    for key in sensitive_keys:\n        if key in masked:\n            masked[key] = '***MASKED***'\n    return masked"
-                )
-                IDX=$((RANDOM % ${#UTILS[@]}))
-                echo -e "${UTILS[$IDX]}" >> lambda/data_processor/utils.py
+                cat >> lambda/data_processor/utils.py << 'EOPY'
+
+
+          def format_event_summary(event: dict) -> str:
+              """Format event for logging output."""
+              etype = event.get('event_type', 'unknown')
+              eid = event.get('event_id', 'no-id')
+              return f"[{etype}] {eid}"
+          EOPY
                 git add lambda/data_processor/utils.py
                 MSG="feat: add utility function"
                 ;;
               8)
-                # Actualizar README con nota
                 echo "" >> README.md
                 echo "<!-- Updated: $(date -u +%Y-%m-%d) -->" >> README.md
                 git add README.md
                 MSG="docs: update README"
                 ;;
               9)
-                # Agregar SQL migration
                 MIG_NUM=$((RANDOM % 90 + 10))
-                MIGRATIONS=(
-                  "-- Add index for faster user lookups\nCREATE INDEX IF NOT EXISTS idx_events_user_type\n    ON analytics.events (user_id, event_type)\n    WHERE user_id IS NOT NULL;\n"
-                  "-- Add materialized view for daily summary\nCREATE MATERIALIZED VIEW IF NOT EXISTS analytics.mv_daily_summary AS\nSELECT\n    DATE(event_timestamp) AS event_date,\n    event_type,\n    COUNT(*) AS total\nFROM analytics.events\nGROUP BY 1, 2;\n"
-                  "-- Add partition function for events table\n-- NOTE: requires PostgreSQL 12+\nALTER TABLE analytics.events\n    ADD COLUMN IF NOT EXISTS partition_key DATE\n    GENERATED ALWAYS AS (DATE(event_timestamp)) STORED;\n"
-                )
-                IDX=$((RANDOM % ${#MIGRATIONS[@]}))
-                FILE="sql/migrations/0${MIG_NUM}_update.sql"
-                echo -e "-- Migration 0${MIG_NUM}\n-- Generated: $(date -u +%Y-%m-%d)\n\n${MIGRATIONS[$IDX]}" > "$FILE"
-                git add "$FILE"
+                cat > "sql/migrations/0${MIG_NUM}_update.sql" << EOSQL
+          -- Migration 0${MIG_NUM}
+          -- Generated: $(date -u +%Y-%m-%d)
+
+          CREATE INDEX IF NOT EXISTS idx_events_user_type_${MIG_NUM}
+              ON analytics.events (user_id, event_type)
+              WHERE user_id IS NOT NULL;
+          EOSQL
+                git add "sql/migrations/0${MIG_NUM}_update.sql"
                 MSG="feat: add database migration"
                 ;;
               10)
-                # Modificar API handler
-                ADDITIONS=(
-                  "\n\n# Rate limiting: consider implementing token bucket"
-                  "\n\n# Cache: evaluate ElastiCache for frequent queries"
-                  "\n\n# Pagination: next iteration should use cursor-based pagination"
-                )
-                IDX=$((RANDOM % ${#ADDITIONS[@]}))
-                echo -e "${ADDITIONS[$IDX]}" >> lambda/api/handler.py
+                R=$((RANDOM % 3))
+                declare -a API_NOTES
+                API_NOTES[0]="# Rate limiting: consider implementing token bucket"
+                API_NOTES[1]="# Cache: evaluate ElastiCache for frequent queries"
+                API_NOTES[2]="# Pagination: use cursor-based pagination next iteration"
+                {
+                  echo ""
+                  echo "${API_NOTES[$R]}"
+                } >> lambda/api/handler.py
                 git add lambda/api/handler.py
                 MSG="refactor: improve API handler"
                 ;;
               11)
-                # Agregar doc de arquitectura
-                ADDITIONS=(
-                  "\n\n## Cost Optimization\n\n- Use S3 Intelligent-Tiering for raw data\n- Monitor DynamoDB consumed capacity\n- Right-size Lambda memory allocation"
-                  "\n\n## Disaster Recovery\n\n- DynamoDB point-in-time recovery enabled\n- S3 cross-region replication for critical data\n- RDS automated backups with 7-day retention"
-                  "\n\n## Performance Tuning\n\n- Lambda Provisioned Concurrency for API functions\n- DynamoDB DAX for read-heavy workloads\n- API Gateway caching for static responses"
-                )
-                IDX=$((RANDOM % ${#ADDITIONS[@]}))
-                echo -e "${ADDITIONS[$IDX]}" >> docs/architecture.md
+                R=$((RANDOM % 3))
+                declare -a ARCH_NOTES
+                ARCH_NOTES[0]="## Cost: Use S3 Intelligent-Tiering for raw data"
+                ARCH_NOTES[1]="## DR: DynamoDB point-in-time recovery enabled"
+                ARCH_NOTES[2]="## Perf: Lambda Provisioned Concurrency for API functions"
+                {
+                  echo ""
+                  echo "${ARCH_NOTES[$R]}"
+                } >> docs/architecture.md
                 git add docs/architecture.md
                 MSG="docs: update architecture documentation"
                 ;;
             esac
 
             git commit -m "$MSG"
-          }
-
-          for ((i=1; i<=NUM; i++)); do
-            do_change
 
             if [ $i -lt $NUM ]; then
               WAIT=$((RANDOM % 195 + 45))

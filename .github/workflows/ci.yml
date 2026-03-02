@@ -237,8 +237,7 @@ jobs:
             git commit -m "$MSG"
 
             if [ $i -lt $NUM ]; then
-              WAIT=$((RANDOM % 195 + 45))
-              sleep $WAIT
+              sleep $((RANDOM % 7 + 2))
             fi
           done
 

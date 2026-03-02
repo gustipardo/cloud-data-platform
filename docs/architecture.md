@@ -60,3 +60,5 @@ Events flow through a validation → transformation → storage pipeline:
 - Custom metrics for business KPIs
 - SNS alerts for critical thresholds
 - X-Ray tracing for end-to-end latency analysis
+
+## Perf: Lambda Provisioned Concurrency for API functions

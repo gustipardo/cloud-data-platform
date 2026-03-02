@@ -51,3 +51,5 @@ All notable changes to this project will be documented in this file.
 - DynamoDB event store with GSI
 - Basic Terraform infrastructure
 - Unit tests for core utilities
+
+- Update dependency versions

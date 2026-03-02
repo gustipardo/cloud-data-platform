@@ -37,3 +37,7 @@ aws s3 cp test_event.json s3://data-pipeline-raw-events-dev/incoming/
 aws lambda invoke --function-name data-pipeline-processor-dev \
   --payload file://test/fixtures/s3_event.json output.json
 ```
+
+### 2026-03-02 15:57:34
+
+- Reviewed CloudWatch Logs Insights queries for debugging

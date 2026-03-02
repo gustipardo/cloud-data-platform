@@ -112,3 +112,5 @@ See [docs/configuration.md](docs/configuration.md) for details.
 ## License
 
 MIT
+
+<!-- Updated: 2026-03-02 -->

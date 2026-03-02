@@ -1,0 +1,43 @@
+{
+    "project_name": "data-pipeline",
+    "environment": "prod",
+    "aws_region": "us-east-1",
+    "log_level": "WARNING",
+    "features": {
+        "enable_xray": true,
+        "enable_dlq": true,
+        "batch_processing": true,
+        "real_time_alerts": true,
+        "data_retention_days": 365
+    },
+    "lambda": {
+        "processor": {
+            "memory_mb": 1024,
+            "timeout_seconds": 300,
+            "reserved_concurrency": 50
+        },
+        "api": {
+            "memory_mb": 512,
+            "timeout_seconds": 30,
+            "reserved_concurrency": 200
+        }
+    },
+    "dynamodb": {
+        "billing_mode": "PAY_PER_REQUEST",
+        "ttl_enabled": true,
+        "ttl_days": 365,
+        "point_in_time_recovery": true
+    },
+    "s3": {
+        "versioning": true,
+        "lifecycle_ia_days": 60,
+        "lifecycle_glacier_days": 180,
+        "lifecycle_expire_days": 730
+    },
+    "monitoring": {
+        "error_threshold": 5,
+        "latency_threshold_ms": 3000,
+        "evaluation_periods": 2,
+        "alert_email": ""
+    }
+}

@@ -1,2 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+dist/
+build/
+*.egg
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.backup
+*.tfplan
+.build/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project
+*.log
+.env
+.env.*
+
+# Old files
 rellenar_historial.sh
+rellenar_gap_marzo_julio.sh
+actividad.txt
+actividad.md
+PLAN_CONTRIBUCIONES.md
+PROMPTS_REPOS.md
 excalidraw.log

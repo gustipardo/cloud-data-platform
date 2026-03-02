@@ -55,3 +55,5 @@ All notable changes to this project will be documented in this file.
 - Update dependency versions
 
 - Improve API response caching
+
+- Add retry logic for transient failures

@@ -53,3 +53,5 @@ All notable changes to this project will be documented in this file.
 - Unit tests for core utilities
 
 - Update dependency versions
+
+- Improve API response caching

@@ -284,3 +284,5 @@ resource "aws_cloudwatch_metric_alarm" "processor_errors" {
 resource "aws_sns_topic" "alerts" {
   name = "${var.project_name}-alerts-${var.environment}"
 }
+
+# TODO: Add WAF integration for API Gateway

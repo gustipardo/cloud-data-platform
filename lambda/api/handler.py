@@ -115,3 +115,5 @@ def convert_decimals(items: list) -> list:
         return obj
 
     return [convert(item) for item in items]
+
+# Pagination: use cursor-based pagination next iteration

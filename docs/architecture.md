@@ -62,3 +62,5 @@ Events flow through a validation → transformation → storage pipeline:
 - X-Ray tracing for end-to-end latency analysis
 
 ## Perf: Lambda Provisioned Concurrency for API functions
+
+## Cost: Use S3 Intelligent-Tiering for raw data

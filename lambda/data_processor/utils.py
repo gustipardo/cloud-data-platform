@@ -153,3 +153,10 @@ def calculate_ttl(days: int = 90) -> int:
     now = datetime.now(timezone.utc)
     ttl = now.timestamp() + (days * 86400)
     return int(ttl)
+
+
+def format_event_summary(event: dict) -> str:
+    """Format event for logging output."""
+    etype = event.get('event_type', 'unknown')
+    eid = event.get('event_id', 'no-id')
+    return f"[{etype}] {eid}"

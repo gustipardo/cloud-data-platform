@@ -114,3 +114,5 @@ See [docs/configuration.md](docs/configuration.md) for details.
 MIT
 
 <!-- Updated: 2026-03-02 -->
+
+<!-- Updated: 2026-03-04 -->

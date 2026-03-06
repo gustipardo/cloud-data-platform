@@ -95,3 +95,12 @@ SELECT
     ROUND(AVG(EXTRACT(EPOCH FROM (o.first_order_time - s.signup_time)) / 3600), 1) AS avg_hours_to_convert
 FROM user_signups s
 LEFT JOIN first_orders o ON s.user_id = o.user_id;
+
+-- Query: Events processed per hour
+SELECT
+    DATE_TRUNC('hour', event_timestamp) AS hour,
+    COUNT(*) AS events
+FROM analytics.events
+WHERE event_timestamp >= NOW() - INTERVAL '7 days'
+GROUP BY 1
+ORDER BY 1 DESC;

@@ -64,3 +64,5 @@ Events flow through a validation → transformation → storage pipeline:
 ## Perf: Lambda Provisioned Concurrency for API functions
 
 ## Cost: Use S3 Intelligent-Tiering for raw data
+
+## Perf: Lambda Provisioned Concurrency for API functions

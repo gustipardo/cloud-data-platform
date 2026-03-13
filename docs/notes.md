@@ -57,3 +57,7 @@ aws lambda invoke --function-name data-pipeline-processor-dev \
 ### 2026-03-12 03:12:47
 
 - Tested VPC endpoint latency vs public endpoint
+
+### 2026-03-13 03:09:43
+
+- Reviewed CloudWatch Logs Insights queries for debugging

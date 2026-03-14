@@ -93,3 +93,5 @@ def lambda_handler(event: dict, context: Any) -> dict:
 # Scale: tested with up to 10k events/minute
 
 # Scale: tested with up to 10k events/minute
+
+# Scale: tested with up to 10k events/minute

@@ -69,3 +69,7 @@ aws lambda invoke --function-name data-pipeline-processor-dev \
 ### 2026-03-16 11:55:11
 
 - Reviewed CloudWatch Logs Insights queries for debugging
+
+### 2026-03-17 11:53:02
+
+- Reviewed DynamoDB capacity metrics, current usage within limits

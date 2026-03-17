@@ -69,3 +69,5 @@ All notable changes to this project will be documented in this file.
 - Update dependency versions
 
 - Add retry logic for transient failures
+
+- Add retry logic for transient failures

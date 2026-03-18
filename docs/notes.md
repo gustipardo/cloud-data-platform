@@ -85,3 +85,7 @@ aws lambda invoke --function-name data-pipeline-processor-dev \
 ### 2026-03-18 16:19:18
 
 - Profiled Lambda memory usage, 512MB optimal for current workload
+
+### 2026-03-18 20:03:01
+
+- Tested VPC endpoint latency vs public endpoint

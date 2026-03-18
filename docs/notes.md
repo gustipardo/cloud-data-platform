@@ -77,3 +77,7 @@ aws lambda invoke --function-name data-pipeline-processor-dev \
 ### 2026-03-17 16:19:05
 
 - Investigated cold start optimization with provisioned concurrency
+
+### 2026-03-18 03:21:32
+
+- Reviewed DynamoDB capacity metrics, current usage within limits

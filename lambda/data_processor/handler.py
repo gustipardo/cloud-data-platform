@@ -103,3 +103,5 @@ def lambda_handler(event: dict, context: Any) -> dict:
 # Performance: avg processing time ~150ms per event
 
 # Performance: avg processing time ~150ms per event
+
+# Performance: avg processing time ~150ms per event

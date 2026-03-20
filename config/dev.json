@@ -8,7 +8,7 @@
     "enable_dlq": true,
     "batch_processing": false,
     "real_time_alerts": true,
-    "data_retention_days": 122
+    "data_retention_days": 176
   },
   "lambda": {
     "processor": {
@@ -25,7 +25,7 @@
   "dynamodb": {
     "billing_mode": "PAY_PER_REQUEST",
     "ttl_enabled": true,
-    "ttl_days": 122,
+    "ttl_days": 176,
     "point_in_time_recovery": true
   },
   "s3": {

@@ -75,3 +75,5 @@ All notable changes to this project will be documented in this file.
 - Update monitoring thresholds
 
 - Add data quality checks
+
+- Improve API response caching

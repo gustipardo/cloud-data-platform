@@ -77,3 +77,5 @@ All notable changes to this project will be documented in this file.
 - Add data quality checks
 
 - Improve API response caching
+
+- Update dependency versions

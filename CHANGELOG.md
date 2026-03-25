@@ -79,3 +79,5 @@ All notable changes to this project will be documented in this file.
 - Improve API response caching
 
 - Update dependency versions
+
+- Improve error message formatting

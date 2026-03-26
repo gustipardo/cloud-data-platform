@@ -304,3 +304,5 @@ resource "aws_sns_topic" "alerts" {
 # TODO: Implement cross-region replication
 
 # TODO: Add backup strategy for DynamoDB
+
+# TODO: Add backup strategy for DynamoDB

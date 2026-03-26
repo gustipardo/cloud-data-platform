@@ -300,3 +300,5 @@ resource "aws_sns_topic" "alerts" {
 # NOTE: Consider switching to provisioned capacity for prod
 
 # TODO: Implement cross-region replication
+
+# TODO: Implement cross-region replication

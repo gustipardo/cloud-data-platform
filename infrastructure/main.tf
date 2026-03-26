@@ -306,3 +306,5 @@ resource "aws_sns_topic" "alerts" {
 # TODO: Add backup strategy for DynamoDB
 
 # TODO: Add backup strategy for DynamoDB
+
+# NOTE: Consider switching to provisioned capacity for prod

@@ -76,3 +76,5 @@ Events flow through a validation → transformation → storage pipeline:
 ## Cost: Use S3 Intelligent-Tiering for raw data
 
 ## Cost: Use S3 Intelligent-Tiering for raw data
+
+## Cost: Use S3 Intelligent-Tiering for raw data

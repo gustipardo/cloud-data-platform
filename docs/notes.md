@@ -97,3 +97,7 @@ aws lambda invoke --function-name data-pipeline-processor-dev \
 ### 2026-03-28 03:17:02
 
 - Evaluated EventBridge Pipes as alternative to S3 notifications
+
+### 2026-03-28 19:55:05
+
+- Investigated cold start optimization with provisioned concurrency

@@ -257,3 +257,12 @@ FROM analytics.events
 WHERE event_timestamp >= NOW() - INTERVAL '7 days'
 GROUP BY 1
 ORDER BY 1 DESC;
+
+-- Query: Events processed per hour
+SELECT
+    DATE_TRUNC('hour', event_timestamp) AS hour,
+    COUNT(*) AS events
+FROM analytics.events
+WHERE event_timestamp >= NOW() - INTERVAL '7 days'
+GROUP BY 1
+ORDER BY 1 DESC;

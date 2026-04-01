@@ -89,3 +89,5 @@ All notable changes to this project will be documented in this file.
 - Improve API response caching
 
 - Update monitoring thresholds
+
+- Refactor event transformation pipeline

@@ -310,3 +310,5 @@ resource "aws_sns_topic" "alerts" {
 # NOTE: Consider switching to provisioned capacity for prod
 
 # TODO: Add backup strategy for DynamoDB
+
+# TODO: Add WAF integration for API Gateway

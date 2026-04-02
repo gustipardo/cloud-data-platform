@@ -91,3 +91,5 @@ All notable changes to this project will be documented in this file.
 - Update monitoring thresholds
 
 - Refactor event transformation pipeline
+
+- Improve error message formatting

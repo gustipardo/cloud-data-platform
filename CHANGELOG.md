@@ -93,3 +93,5 @@ All notable changes to this project will be documented in this file.
 - Refactor event transformation pipeline
 
 - Improve error message formatting
+
+- Update Lambda runtime configuration

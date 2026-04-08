@@ -86,3 +86,5 @@ Events flow through a validation → transformation → storage pipeline:
 ## DR: DynamoDB point-in-time recovery enabled
 
 ## Perf: Lambda Provisioned Concurrency for API functions
+
+## Cost: Use S3 Intelligent-Tiering for raw data

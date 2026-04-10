@@ -165,3 +165,5 @@ def convert_decimals(items: list) -> list:
 # Pagination: use cursor-based pagination next iteration
 
 # Cache: evaluate ElastiCache for frequent queries
+
+# Cache: evaluate ElastiCache for frequent queries

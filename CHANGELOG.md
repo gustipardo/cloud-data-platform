@@ -105,3 +105,5 @@ All notable changes to this project will be documented in this file.
 - Update dependency versions
 
 - Add request validation middleware
+
+- Add data quality checks

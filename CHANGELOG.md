@@ -107,3 +107,5 @@ All notable changes to this project will be documented in this file.
 - Add request validation middleware
 
 - Add data quality checks
+
+- Improve error message formatting

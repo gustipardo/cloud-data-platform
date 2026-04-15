@@ -336,3 +336,5 @@ resource "aws_sns_topic" "alerts" {
 # TODO: Add backup strategy for DynamoDB
 
 # TODO: Add backup strategy for DynamoDB
+
+# TODO: Add WAF integration for API Gateway

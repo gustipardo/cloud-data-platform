@@ -109,3 +109,5 @@ All notable changes to this project will be documented in this file.
 - Add data quality checks
 
 - Improve error message formatting
+
+- Add data quality checks

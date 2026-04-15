@@ -98,3 +98,5 @@ Events flow through a validation → transformation → storage pipeline:
 ## Cost: Use S3 Intelligent-Tiering for raw data
 
 ## DR: DynamoDB point-in-time recovery enabled
+
+## DR: DynamoDB point-in-time recovery enabled

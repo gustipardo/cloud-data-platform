@@ -111,3 +111,5 @@ All notable changes to this project will be documented in this file.
 - Improve error message formatting
 
 - Add data quality checks
+
+- Add retry logic for transient failures

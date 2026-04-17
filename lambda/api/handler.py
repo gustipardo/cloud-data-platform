@@ -173,3 +173,5 @@ def convert_decimals(items: list) -> list:
 # Cache: evaluate ElastiCache for frequent queries
 
 # Rate limiting: consider implementing token bucket
+
+# Pagination: use cursor-based pagination next iteration

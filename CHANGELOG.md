@@ -117,3 +117,5 @@ All notable changes to this project will be documented in this file.
 - Improve API response caching
 
 - Add data quality checks
+
+- Optimize DynamoDB batch write operations

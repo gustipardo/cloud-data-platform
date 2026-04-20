@@ -119,3 +119,5 @@ All notable changes to this project will be documented in this file.
 - Add data quality checks
 
 - Optimize DynamoDB batch write operations
+
+- Update Lambda runtime configuration

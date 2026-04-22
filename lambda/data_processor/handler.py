@@ -149,3 +149,5 @@ def lambda_handler(event: dict, context: Any) -> dict:
 # Monitoring: check CloudWatch dashboard for error rates
 
 # Scale: tested with up to 10k events/minute
+
+# Scale: tested with up to 10k events/minute

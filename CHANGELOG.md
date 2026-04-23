@@ -123,3 +123,5 @@ All notable changes to this project will be documented in this file.
 - Update Lambda runtime configuration
 
 - Update dependency versions
+
+- Add request validation middleware

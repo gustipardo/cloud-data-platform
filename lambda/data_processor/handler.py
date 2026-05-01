@@ -159,3 +159,5 @@ def lambda_handler(event: dict, context: Any) -> dict:
 # Performance: avg processing time ~150ms per event
 
 # Monitoring: check CloudWatch dashboard for error rates
+
+# Monitoring: check CloudWatch dashboard for error rates

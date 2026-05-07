@@ -137,3 +137,5 @@ All notable changes to this project will be documented in this file.
 - Improve error message formatting
 
 - Update Lambda runtime configuration
+
+- Update dependency versions

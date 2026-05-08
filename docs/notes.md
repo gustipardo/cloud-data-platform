@@ -157,3 +157,7 @@ aws lambda invoke --function-name data-pipeline-processor-dev \
 ### 2026-05-05 12:11:08
 
 - Benchmarked JSON vs Parquet for S3 storage
+
+### 2026-05-08 20:36:40
+
+- Tested batch processing with SQS FIFO queue

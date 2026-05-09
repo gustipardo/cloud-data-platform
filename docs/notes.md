@@ -165,3 +165,7 @@ aws lambda invoke --function-name data-pipeline-processor-dev \
 ### 2026-05-09 20:22:59
 
 - Benchmarked JSON vs Parquet for S3 storage
+
+### 2026-05-09 20:23:08
+
+- Reviewed DynamoDB capacity metrics, current usage within limits

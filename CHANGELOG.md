@@ -145,3 +145,5 @@ All notable changes to this project will be documented in this file.
 - Optimize DynamoDB batch write operations
 
 - Add request validation middleware
+
+- Optimize DynamoDB batch write operations

@@ -181,3 +181,7 @@ aws lambda invoke --function-name data-pipeline-processor-dev \
 ### 2026-05-11 21:04:12
 
 - Benchmarked JSON vs Parquet for S3 storage
+
+### 2026-05-14 13:02:08
+
+- Reviewed CloudWatch Logs Insights queries for debugging

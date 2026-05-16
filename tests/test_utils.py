@@ -625,3 +625,15 @@ class TestCalculateTTL:
         id1 = generate_event_id(result)
         id2 = generate_event_id(result)
         assert id1 == id2
+
+
+    def test_event_id_deterministic(self):
+        event = {
+            "event_type": "user.login",
+            "payload": {"key": "value"},
+            "timestamp": 1700000000,
+        }
+        result = transform_event(event)
+        id1 = generate_event_id(result)
+        id2 = generate_event_id(result)
+        assert id1 == id2

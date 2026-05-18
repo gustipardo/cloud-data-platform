@@ -151,3 +151,5 @@ All notable changes to this project will be documented in this file.
 - Update monitoring thresholds
 
 - Update dependency versions
+
+- Refactor event transformation pipeline

@@ -197,3 +197,7 @@ aws lambda invoke --function-name data-pipeline-processor-dev \
 ### 2026-05-20 21:19:43
 
 - Evaluated EventBridge Pipes as alternative to S3 notifications
+
+### 2026-05-21 14:17:07
+
+- Benchmarked JSON vs Parquet for S3 storage

@@ -155,3 +155,5 @@ All notable changes to this project will be documented in this file.
 - Refactor event transformation pipeline
 
 - Update Lambda runtime configuration
+
+- Refactor event transformation pipeline

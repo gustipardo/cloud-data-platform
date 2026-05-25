@@ -201,3 +201,7 @@ aws lambda invoke --function-name data-pipeline-processor-dev \
 ### 2026-05-21 14:17:07
 
 - Benchmarked JSON vs Parquet for S3 storage
+
+### 2026-05-25 17:16:32
+
+- Explored Step Functions for complex event workflows

@@ -171,3 +171,5 @@ All notable changes to this project will be documented in this file.
 - Add retry logic for transient failures
 
 - Add request validation middleware
+
+- Improve error message formatting

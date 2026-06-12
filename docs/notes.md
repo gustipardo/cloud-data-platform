@@ -281,3 +281,7 @@ aws lambda invoke --function-name data-pipeline-processor-dev \
 ### 2026-06-11 14:52:12
 
 - Reviewed CloudWatch Logs Insights queries for debugging
+
+### 2026-06-12 21:17:52
+
+- Explored Step Functions for complex event workflows

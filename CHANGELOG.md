@@ -179,3 +179,5 @@ All notable changes to this project will be documented in this file.
 - Optimize DynamoDB batch write operations
 
 - Update Lambda runtime configuration
+
+- Optimize DynamoDB batch write operations

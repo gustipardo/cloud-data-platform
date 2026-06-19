@@ -297,3 +297,7 @@ aws lambda invoke --function-name data-pipeline-processor-dev \
 ### 2026-06-18 14:19:10
 
 - Benchmarked JSON vs Parquet for S3 storage
+
+### 2026-06-19 05:26:21
+
+- Tested VPC endpoint latency vs public endpoint

@@ -183,3 +183,5 @@ All notable changes to this project will be documented in this file.
 - Optimize DynamoDB batch write operations
 
 - Refactor event transformation pipeline
+
+- Add data quality checks

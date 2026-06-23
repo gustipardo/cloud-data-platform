@@ -189,3 +189,5 @@ All notable changes to this project will be documented in this file.
 - Update Lambda runtime configuration
 
 - Add request validation middleware
+
+- Improve API response caching

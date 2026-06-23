@@ -301,3 +301,7 @@ aws lambda invoke --function-name data-pipeline-processor-dev \
 ### 2026-06-19 05:26:21
 
 - Tested VPC endpoint latency vs public endpoint
+
+### 2026-06-23 17:21:39
+
+- Analyzed error patterns, most failures are transient

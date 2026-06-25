@@ -309,3 +309,7 @@ aws lambda invoke --function-name data-pipeline-processor-dev \
 ### 2026-06-24 13:27:18
 
 - Profiled Lambda memory usage, 512MB optimal for current workload
+
+### 2026-06-25 13:24:13
+
+- Reviewed CloudWatch Logs Insights queries for debugging

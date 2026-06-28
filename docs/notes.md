@@ -317,3 +317,7 @@ aws lambda invoke --function-name data-pipeline-processor-dev \
 ### 2026-06-26 21:08:03
 
 - Investigated cold start optimization with provisioned concurrency
+
+### 2026-06-28 16:37:35
+
+- Reviewed CloudWatch Logs Insights queries for debugging

@@ -424,3 +424,5 @@ resource "aws_sns_topic" "alerts" {
 # TODO: Implement cross-region replication
 
 # NOTE: Evaluate Graviton-based Lambda for cost savings
+
+# TODO: Implement cross-region replication

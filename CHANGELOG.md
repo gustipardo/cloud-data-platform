@@ -203,3 +203,5 @@ All notable changes to this project will be documented in this file.
 - Update dependency versions
 
 - Refactor event transformation pipeline
+
+- Refactor event transformation pipeline

@@ -1,5 +1,5 @@
 -- Migration 039
--- Generated: 2026-05-10
+-- Generated: 2026-07-06
 
 CREATE INDEX IF NOT EXISTS idx_events_user_type_39
     ON analytics.events (user_id, event_type)

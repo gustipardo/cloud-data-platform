@@ -438,3 +438,5 @@ resource "aws_sns_topic" "alerts" {
 # TODO: Add VPC endpoint for S3
 
 # NOTE: Consider switching to provisioned capacity for prod
+
+# TODO: Implement cross-region replication

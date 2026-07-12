@@ -333,3 +333,7 @@ aws lambda invoke --function-name data-pipeline-processor-dev \
 ### 2026-07-10 04:16:11
 
 - Tested batch processing with SQS FIFO queue
+
+### 2026-07-12 20:23:21
+
+- Profiled Lambda memory usage, 512MB optimal for current workload

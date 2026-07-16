@@ -219,3 +219,5 @@ All notable changes to this project will be documented in this file.
 - Improve API response caching
 
 - Add retry logic for transient failures
+
+- Update Lambda runtime configuration

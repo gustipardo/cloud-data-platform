@@ -361,3 +361,7 @@ aws lambda invoke --function-name data-pipeline-processor-dev \
 ### 2026-07-21 16:44:25
 
 - Profiled Lambda memory usage, 512MB optimal for current workload
+
+### 2026-07-21 16:44:35
+
+- Explored Step Functions for complex event workflows

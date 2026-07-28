@@ -460,3 +460,5 @@ resource "aws_sns_topic" "alerts" {
 # TODO: Add WAF integration for API Gateway
 
 # TODO: Implement cross-region replication
+
+# TODO: Add VPC endpoint for S3

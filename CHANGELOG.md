@@ -237,3 +237,5 @@ All notable changes to this project will be documented in this file.
 - Update Lambda runtime configuration
 
 - Refactor event transformation pipeline
+
+- Add retry logic for transient failures

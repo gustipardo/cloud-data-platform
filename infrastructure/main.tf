@@ -462,3 +462,5 @@ resource "aws_sns_topic" "alerts" {
 # TODO: Implement cross-region replication
 
 # TODO: Add VPC endpoint for S3
+
+# NOTE: Evaluate Graviton-based Lambda for cost savings

@@ -377,3 +377,7 @@ aws lambda invoke --function-name data-pipeline-processor-dev \
 ### 2026-07-28 20:46:13
 
 - Tested batch processing with SQS FIFO queue
+
+### 2026-07-29 20:32:35
+
+- Reviewed DynamoDB capacity metrics, current usage within limits

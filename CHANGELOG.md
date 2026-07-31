@@ -243,3 +243,5 @@ All notable changes to this project will be documented in this file.
 - Add request validation middleware
 
 - Add retry logic for transient failures
+
+- Update Lambda runtime configuration

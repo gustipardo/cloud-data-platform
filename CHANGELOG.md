@@ -249,3 +249,5 @@ All notable changes to this project will be documented in this file.
 - Improve API response caching
 
 - Update Lambda runtime configuration
+
+- Improve error message formatting

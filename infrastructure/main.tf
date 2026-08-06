@@ -486,3 +486,5 @@ resource "aws_sns_topic" "alerts" {
 # NOTE: Consider switching to provisioned capacity for prod
 
 # NOTE: Evaluate Graviton-based Lambda for cost savings
+
+# TODO: Add backup strategy for DynamoDB

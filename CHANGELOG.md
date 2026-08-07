@@ -253,3 +253,5 @@ All notable changes to this project will be documented in this file.
 - Improve error message formatting
 
 - Improve API response caching
+
+- Refactor event transformation pipeline

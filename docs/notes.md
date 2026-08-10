@@ -397,3 +397,7 @@ aws lambda invoke --function-name data-pipeline-processor-dev \
 ### 2026-08-07 00:48:09
 
 - Explored Step Functions for complex event workflows
+
+### 2026-08-10 02:35:29
+
+- Reviewed DynamoDB capacity metrics, current usage within limits

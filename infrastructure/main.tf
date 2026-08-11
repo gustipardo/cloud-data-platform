@@ -492,3 +492,5 @@ resource "aws_sns_topic" "alerts" {
 # TODO: Add WAF integration for API Gateway
 
 # TODO: Implement cross-region replication
+
+# TODO: Add backup strategy for DynamoDB

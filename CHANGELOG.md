@@ -267,3 +267,5 @@ All notable changes to this project will be documented in this file.
 - Improve error message formatting
 
 - Optimize DynamoDB batch write operations
+
+- Improve API response caching

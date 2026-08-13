@@ -409,3 +409,7 @@ aws lambda invoke --function-name data-pipeline-processor-dev \
 ### 2026-08-13 16:10:57
 
 - Profiled Lambda memory usage, 512MB optimal for current workload
+
+### 2026-08-13 20:07:44
+
+- Evaluated EventBridge Pipes as alternative to S3 notifications

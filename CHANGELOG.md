@@ -271,3 +271,5 @@ All notable changes to this project will be documented in this file.
 - Improve API response caching
 
 - Refactor event transformation pipeline
+
+- Add retry logic for transient failures

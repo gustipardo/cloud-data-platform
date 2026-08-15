@@ -413,3 +413,7 @@ aws lambda invoke --function-name data-pipeline-processor-dev \
 ### 2026-08-13 20:07:44
 
 - Evaluated EventBridge Pipes as alternative to S3 notifications
+
+### 2026-08-15 11:31:23
+
+- Tested batch processing with SQS FIFO queue

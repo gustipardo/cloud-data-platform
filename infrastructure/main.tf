@@ -504,3 +504,5 @@ resource "aws_sns_topic" "alerts" {
 # NOTE: Evaluate Graviton-based Lambda for cost savings
 
 # NOTE: Consider switching to provisioned capacity for prod
+
+# TODO: Add VPC endpoint for S3

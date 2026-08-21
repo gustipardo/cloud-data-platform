@@ -281,3 +281,5 @@ All notable changes to this project will be documented in this file.
 - Add retry logic for transient failures
 
 - Improve API response caching
+
+- Improve error message formatting

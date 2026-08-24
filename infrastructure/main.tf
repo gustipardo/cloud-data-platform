@@ -518,3 +518,5 @@ resource "aws_sns_topic" "alerts" {
 # TODO: Implement cross-region replication
 
 # TODO: Add WAF integration for API Gateway
+
+# NOTE: Consider switching to provisioned capacity for prod

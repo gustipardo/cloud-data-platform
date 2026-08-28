@@ -433,3 +433,7 @@ aws lambda invoke --function-name data-pipeline-processor-dev \
 ### 2026-08-25 11:38:26
 
 - Tested batch processing with SQS FIFO queue
+
+### 2026-08-28 00:26:02
+
+- Reviewed CloudWatch Logs Insights queries for debugging

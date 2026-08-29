@@ -449,3 +449,7 @@ aws lambda invoke --function-name data-pipeline-processor-dev \
 ### 2026-08-28 21:20:54
 
 - Explored Step Functions for complex event workflows
+
+### 2026-08-29 07:07:32
+
+- Tested batch processing with SQS FIFO queue

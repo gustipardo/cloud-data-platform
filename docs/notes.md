@@ -461,3 +461,7 @@ aws lambda invoke --function-name data-pipeline-processor-dev \
 ### 2026-08-30 18:38:32
 
 - Reviewed DynamoDB capacity metrics, current usage within limits
+
+### 2026-09-01 21:58:20
+
+- Tested VPC endpoint latency vs public endpoint

@@ -465,3 +465,7 @@ aws lambda invoke --function-name data-pipeline-processor-dev \
 ### 2026-09-01 21:58:20
 
 - Tested VPC endpoint latency vs public endpoint
+
+### 2026-09-03 18:42:17
+
+- Investigated cold start optimization with provisioned concurrency

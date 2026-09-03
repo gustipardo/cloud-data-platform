@@ -469,3 +469,7 @@ aws lambda invoke --function-name data-pipeline-processor-dev \
 ### 2026-09-03 18:42:17
 
 - Investigated cold start optimization with provisioned concurrency
+
+### 2026-09-03 18:42:21
+
+- Explored Step Functions for complex event workflows

@@ -254,3 +254,5 @@ Events flow through a validation → transformation → storage pipeline:
 ## DR: DynamoDB point-in-time recovery enabled
 
 ## Perf: Lambda Provisioned Concurrency for API functions
+
+## DR: DynamoDB point-in-time recovery enabled

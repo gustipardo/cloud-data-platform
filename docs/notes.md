@@ -485,3 +485,7 @@ aws lambda invoke --function-name data-pipeline-processor-dev \
 ### 2026-09-07 16:25:31
 
 - Tested VPC endpoint latency vs public endpoint
+
+### 2026-09-09 04:46:26
+
+- Tested batch processing with SQS FIFO queue

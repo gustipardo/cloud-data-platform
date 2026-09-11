@@ -497,3 +497,7 @@ aws lambda invoke --function-name data-pipeline-processor-dev \
 ### 2026-09-10 14:57:21
 
 - Profiled Lambda memory usage, 512MB optimal for current workload
+
+### 2026-09-11 04:44:47
+
+- Benchmarked JSON vs Parquet for S3 storage

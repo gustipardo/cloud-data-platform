@@ -303,3 +303,5 @@ All notable changes to this project will be documented in this file.
 - Update dependency versions
 
 - Update dependency versions
+
+- Refactor event transformation pipeline

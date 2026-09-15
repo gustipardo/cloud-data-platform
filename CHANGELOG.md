@@ -307,3 +307,5 @@ All notable changes to this project will be documented in this file.
 - Refactor event transformation pipeline
 
 - Update monitoring thresholds
+
+- Add data quality checks

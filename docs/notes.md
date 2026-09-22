@@ -537,3 +537,7 @@ aws lambda invoke --function-name data-pipeline-processor-dev \
 ### 2026-09-21 05:00:09
 
 - Reviewed DynamoDB capacity metrics, current usage within limits
+
+### 2026-09-22 15:29:40
+
+- Evaluated EventBridge Pipes as alternative to S3 notifications

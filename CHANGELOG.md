@@ -315,3 +315,5 @@ All notable changes to this project will be documented in this file.
 - Improve API response caching
 
 - Improve API response caching
+
+- Improve API response caching

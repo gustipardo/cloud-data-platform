@@ -1,5 +1,5 @@
 -- Migration 052
--- Generated: 2026-07-14
+-- Generated: 2026-09-23
 
 CREATE INDEX IF NOT EXISTS idx_events_user_type_52
     ON analytics.events (user_id, event_type)

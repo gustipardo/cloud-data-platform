@@ -562,3 +562,5 @@ resource "aws_sns_topic" "alerts" {
 # TODO: Add VPC endpoint for S3
 
 # TODO: Implement cross-region replication
+
+# TODO: Implement cross-region replication

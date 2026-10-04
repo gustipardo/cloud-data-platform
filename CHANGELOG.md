@@ -319,3 +319,5 @@ All notable changes to this project will be documented in this file.
 - Improve API response caching
 
 - Add request validation middleware
+
+- Improve API response caching

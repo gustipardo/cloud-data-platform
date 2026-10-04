@@ -561,3 +561,7 @@ aws lambda invoke --function-name data-pipeline-processor-dev \
 ### 2026-10-04 18:40:30
 
 - Investigated cold start optimization with provisioned concurrency
+
+### 2026-10-04 18:40:33
+
+- Profiled Lambda memory usage, 512MB optimal for current workload

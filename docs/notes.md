@@ -597,3 +597,7 @@ aws lambda invoke --function-name data-pipeline-processor-dev \
 ### 2026-10-11 05:51:36
 
 - Evaluated EventBridge Pipes as alternative to S3 notifications
+
+### 2026-10-12 20:15:05
+
+- Analyzed error patterns, most failures are transient

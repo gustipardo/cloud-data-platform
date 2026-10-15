@@ -609,3 +609,7 @@ aws lambda invoke --function-name data-pipeline-processor-dev \
 ### 2026-10-14 15:47:55
 
 - Investigated cold start optimization with provisioned concurrency
+
+### 2026-10-15 19:11:50
+
+- Benchmarked JSON vs Parquet for S3 storage

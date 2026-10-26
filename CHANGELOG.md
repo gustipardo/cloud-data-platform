@@ -333,3 +333,5 @@ All notable changes to this project will be documented in this file.
 - Update dependency versions
 
 - Update monitoring thresholds
+
+- Add request validation middleware

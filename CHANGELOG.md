@@ -335,3 +335,5 @@ All notable changes to this project will be documented in this file.
 - Update monitoring thresholds
 
 - Add request validation middleware
+
+- Refactor event transformation pipeline

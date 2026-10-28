@@ -345,3 +345,5 @@ All notable changes to this project will be documented in this file.
 - Optimize DynamoDB batch write operations
 
 - Add data quality checks
+
+- Update dependency versions

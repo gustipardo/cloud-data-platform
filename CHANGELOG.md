@@ -349,3 +349,5 @@ All notable changes to this project will be documented in this file.
 - Update dependency versions
 
 - Improve error message formatting
+
+- Add retry logic for transient failures

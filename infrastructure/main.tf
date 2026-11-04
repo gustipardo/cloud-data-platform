@@ -600,3 +600,5 @@ resource "aws_sns_topic" "alerts" {
 # NOTE: Evaluate Graviton-based Lambda for cost savings
 
 # TODO: Add WAF integration for API Gateway
+
+# TODO: Add backup strategy for DynamoDB

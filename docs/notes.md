@@ -677,3 +677,7 @@ aws lambda invoke --function-name data-pipeline-processor-dev \
 ### 2026-11-05 00:30:16
 
 - Tested VPC endpoint latency vs public endpoint
+
+### 2026-11-05 21:28:44
+
+- Explored Step Functions for complex event workflows

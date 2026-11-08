@@ -353,3 +353,5 @@ All notable changes to this project will be documented in this file.
 - Add retry logic for transient failures
 
 - Update monitoring thresholds
+
+- Add retry logic for transient failures

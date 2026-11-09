@@ -355,3 +355,5 @@ All notable changes to this project will be documented in this file.
 - Update monitoring thresholds
 
 - Add retry logic for transient failures
+
+- Add data quality checks

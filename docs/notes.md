@@ -705,3 +705,7 @@ aws lambda invoke --function-name data-pipeline-processor-dev \
 ### 2026-11-12 01:38:41
 
 - Profiled Lambda memory usage, 512MB optimal for current workload
+
+### 2026-11-16 23:45:21
+
+- Reviewed DynamoDB capacity metrics, current usage within limits

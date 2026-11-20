@@ -713,3 +713,7 @@ aws lambda invoke --function-name data-pipeline-processor-dev \
 ### 2026-11-18 07:34:05
 
 - Tested VPC endpoint latency vs public endpoint
+
+### 2026-11-20 22:15:16
+
+- Evaluated EventBridge Pipes as alternative to S3 notifications

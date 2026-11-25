@@ -373,3 +373,5 @@ All notable changes to this project will be documented in this file.
 - Refactor event transformation pipeline
 
 - Add request validation middleware
+
+- Add request validation middleware

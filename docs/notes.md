@@ -717,3 +717,7 @@ aws lambda invoke --function-name data-pipeline-processor-dev \
 ### 2026-11-20 22:15:16
 
 - Evaluated EventBridge Pipes as alternative to S3 notifications
+
+### 2026-11-27 19:54:24
+
+- Reviewed CloudWatch Logs Insights queries for debugging
